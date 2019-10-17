@@ -103,33 +103,40 @@ public class Main {
         Scanner scnr = new Scanner(System.in);
         SecureRandom random = new SecureRandom();
         Random rand = new Random();
-        int ans, userAns, correct = 0, counter = 0, bound, mathType;
+        int ans, correct = 0, counter = 0, ch, bound, mathType;
+        double userAns;
         final double NUM_QUESTIONS = 10.0;
         double grade;
 
-        bound  = difficultyLevel(scnr);
-        mathType = arithmeticType(scnr);
 
-        while (counter != 10) {
-            ans = multPractice(random, bound, mathType);
-            userAns = scnr.nextInt();
-            if (ans != userAns) {
-               //wrong++;
-                negResponses(rand);
+        while (true) {
+            bound  = difficultyLevel(scnr);
+            mathType = arithmeticType(scnr);
+            while (counter != 10) {
+                ans = multPractice(random, bound, mathType);
+                userAns = scnr.nextDouble();
+                if (ans != userAns) {
+                    //wrong++;
+                    negResponses(rand);
+                }
+                if (ans == userAns) {
+                    correct++;
+                    posResponses(rand);
+                }
+                counter++;
             }
-            if (ans == userAns) {
-                correct++;
-                posResponses(rand);
-            }
-            counter++;
-        }
 
-        grade = correct / NUM_QUESTIONS;
-        if (grade > 0.75) {
-            System.out.println("Congratulations, you are ready to go to the next level!");
-        }
-        else {
-            System.out.println("Please ask your teacher for extra help.");
+            grade = correct / NUM_QUESTIONS;
+            System.out.println("You got " + correct + " correct and " + (10 - counter) + "wrong.")
+            if (grade > 0.75) {
+                System.out.println("Congratulations, you are ready to go to the next level!");
+            } else {
+                System.out.println("Please ask your teacher for extra help.");
+            }
+            System.out.println("Would you like to begin a new session?\n1) Continue\n2) Exit\n");
+            if (scnr.nextInt() != 1) {
+                break;
+            }
         }
     }
 }
