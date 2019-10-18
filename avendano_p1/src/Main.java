@@ -7,8 +7,8 @@ public class Main {
     public static int multPractice (SecureRandom random, int bound, int arithType) {
         int a, b;
 
-        a = random.nextInt(bound);
-        b = random.nextInt(bound);
+        a = random.nextInt(2 * bound + 1) - bound;
+        b = random.nextInt(2 * bound + 1) - bound;
 
         if (arithType == 1) {
             System.out.println("How much is " + a + " plus " + b);
@@ -118,12 +118,10 @@ public class Main {
                 ans = multPractice(random, bound, mathType);
                 userAns = scnr.nextDouble();
                 if (Math.abs(ans - userAns) < 0.001) {
-                    System.out.println("correct");
                     correct++;
                     posResponses(rand);
                 }
                 else {
-                    System.out.println("wrong");
                     negResponses(rand);
                 }
                 counter++;
