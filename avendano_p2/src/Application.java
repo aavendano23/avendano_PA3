@@ -1,6 +1,6 @@
 public class Application {
 
-    public static void main(String[] args) {
+    public static void TestCase() {
         SavingsAccount saver1 = new SavingsAccount();
         SavingsAccount saver2 = new SavingsAccount();
 
