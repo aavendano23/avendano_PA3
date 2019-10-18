@@ -4,12 +4,15 @@ import java.util.Random;
 
 public class Main {
 
-    public static int multPractice (SecureRandom random, int bound, int arithType) {
+    // generates the math problems
+    public static int mathPractice (SecureRandom random, int bound, int arithType) {
         int a, b;
 
+        // generates random numbers
         a = random.nextInt(bound);
         b = random.nextInt(bound);
 
+        // displays math problem and return answer
         if (arithType == 1) {
             System.out.println("How much is " + a + " plus " + b);
             return a + b;
@@ -27,11 +30,11 @@ public class Main {
             return a / b;
         }
         else {
-            return multPractice(random, bound, random.nextInt(4));
+            return mathPractice(random, bound, random.nextInt(4));
         }
     }
 
-    // do i need to make it static does main have to be static
+    // displays randomly selected positive responses
     public static void posResponses(Random random) {
 
         int op = random.nextInt(4);
@@ -51,6 +54,7 @@ public class Main {
         }
     }
 
+    // displays randomly selected negative responses
     public static void negResponses(Random random) {
 
         int op = random.nextInt(4);
@@ -70,9 +74,11 @@ public class Main {
         }
     }
 
+    // decide how many digits are the numbers used in math problems
     public static int difficultyLevel(Scanner input) {
         int level;
 
+        // ask user to select difficulty option
         System.out.println("Choose difficulty level:\nLevel 1: Only single digits\nLevel 2: Numbers as large as two digits\n" +
                 "Level 3: Numbers as large as three digits\nLevel 4: Numbers as large as four digits");
         level = input.nextInt();
@@ -81,6 +87,7 @@ public class Main {
             level = input.nextInt();
         }
 
+        // returns the upper bound integer of the high number of digits
         if (level == 1) {
             return  9;
         }
@@ -95,12 +102,15 @@ public class Main {
         }
     }
 
+    // decides the type of math problem
     public static int arithmeticType (Scanner input) {
         int arithType;
+
+        // ask user to select what type of math problems they would like
         System.out.println("Choose arithmetic problem:\n1: Addition\n2: Multiplication\n3: Subtraction\n4: Division\n" +
                 "5:Random Mixture");
         arithType = input.nextInt();
-        
+
         while (arithType > 5 || arithType < 0) {
             System.out.println("Please enter a valid option 1 - 5");
             arithType = input.nextInt();
@@ -123,9 +133,12 @@ public class Main {
             correct = 0;
             bound  = difficultyLevel(scnr);
             mathType = arithmeticType(scnr);
+
+            // displays math problem
             while (counter != 10) {
-                ans = multPractice(random, bound, mathType);
+                ans = mathPractice(random, bound, mathType);
                 userAns = scnr.nextDouble();
+                // determines if user's answer is correct
                 if (Math.abs(ans - userAns) < 0.001) {
                     correct++;
                     posResponses(rand);
@@ -136,6 +149,7 @@ public class Main {
                 counter++;
             }
 
+            // displays number of correct problems and if the user would like to restart
             grade = correct / NUM_QUESTIONS;
             System.out.println("You got " + correct + " correct and " + (10 - correct) + " wrong.");
             if (grade > 0.75) {
