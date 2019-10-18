@@ -1,6 +1,6 @@
 public class SavingsAccount {
     private static double annualInterestRate;
-    private static double savingsBalance;
+    private double savingsBalance;
 
     public double calculateMonthlyInterest() {
         double monthlyInterest = (savingsBalance * annualInterestRate) / 12;
