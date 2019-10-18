@@ -7,8 +7,8 @@ public class Main {
     public static int multPractice (SecureRandom random, int bound, int arithType) {
         int a, b;
 
-        a = random.nextInt(2 * bound + 1) - bound;
-        b = random.nextInt(2 * bound + 1) - bound;
+        a = random.nextInt(bound);
+        b = random.nextInt(bound);
 
         if (arithType == 1) {
             System.out.println("How much is " + a + " plus " + b);
@@ -76,6 +76,10 @@ public class Main {
         System.out.println("Choose difficulty level:\nLevel 1: Only single digits\nLevel 2: Numbers as large as two digits\n" +
                 "Level 3: Numbers as large as three digits\nLevel 4: Numbers as large as four digits");
         level = input.nextInt();
+        while (level > 4 || level < 0) {
+            System.out.println("Please enter a valid option 1 - 4");
+            level = input.nextInt();
+        }
 
         if (level == 1) {
             return  9;
@@ -96,6 +100,11 @@ public class Main {
         System.out.println("Choose arithmetic problem:\n1: Addition\n2: Multiplication\n3: Subtraction\n4: Division\n" +
                 "5:Random Mixture");
         arithType = input.nextInt();
+        
+        while (arithType > 5 || arithType < 0) {
+            System.out.println("Please enter a valid option 1 - 5");
+            arithType = input.nextInt();
+        }
         return arithType;
     }
 
