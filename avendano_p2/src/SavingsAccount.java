@@ -17,6 +17,6 @@ public class SavingsAccount {
     }
 
     public void printMonthlyInterest() {
-        System.out.println(calculateMonthlyInterest());
+        System.out.printf("%f\n", calculateMonthlyInterest());
     }
 }
