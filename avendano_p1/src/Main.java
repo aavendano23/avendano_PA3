@@ -5,7 +5,7 @@ import java.util.Random;
 public class Main {
 
     // generates the math problems
-    public static int mathPractice (SecureRandom random, int bound, int arithType) {
+    public static Double mathPractice (SecureRandom random, int bound, int arithType) {
         int a, b;
 
         // generates random numbers
@@ -15,19 +15,23 @@ public class Main {
         // displays math problem and return answer
         if (arithType == 1) {
             System.out.println("How much is " + a + " plus " + b);
-            return a + b;
+            return (double)a + b;
         }
         else if (arithType == 2) {
             System.out.println("How much is " + a + " times " + b);
-            return a * b;
+            return (double)a * b;
         }
         else if (arithType == 3) {
             System.out.println("How much is " + a + " minus " + b);
-            return a - b;
+            return (double)a - b;
         }
         else if (arithType == 4) {
+            if (b == 0) {
+                a = random.nextInt(bound);
+                b = random.nextInt(bound) + 1;
+            }
             System.out.println("How much is " + a + " divided by " + b);
-            return a / b;
+            return (double)a / b;
         }
         else {
             return mathPractice(random, bound, random.nextInt(4));
@@ -122,8 +126,8 @@ public class Main {
         Scanner scnr = new Scanner(System.in);
         SecureRandom random = new SecureRandom();
         Random rand = new Random();
-        int ans, correct = 0, counter = 0, ch, bound, mathType;
-        double userAns;
+        int correct = 0, counter = 0, ch, bound, mathType;
+        double ans, userAns;
         final double NUM_QUESTIONS = 10.0;
         double grade;
 
@@ -139,7 +143,9 @@ public class Main {
                 ans = mathPractice(random, bound, mathType);
                 userAns = scnr.nextDouble();
                 // determines if user's answer is correct
-                if (Math.abs(ans - userAns) < 0.001) {
+                System.out.println("ans: " + ans);
+                System.out.println("ans: " + (ans - userAns));
+                if (Math.abs(ans - userAns) < 0.01) {
                     correct++;
                     posResponses(rand);
                 }
