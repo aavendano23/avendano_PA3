@@ -2,10 +2,9 @@ public class SavingsAccount {
     private static double annualInterestRate;
     private double savingsBalance;
 
-    public double calculateMonthlyInterest() {
+    public void calculateMonthlyInterest() {
         double monthlyInterest = (savingsBalance * annualInterestRate) / 12;
         savingsBalance += monthlyInterest;
-        return monthlyInterest;
     }
 
     public static void modifyInterestRate(double amt) {
@@ -16,7 +15,7 @@ public class SavingsAccount {
         savingsBalance = balance;
     }
 
-    public void printMonthlyInterest() {
-        System.out.printf("%f\n", calculateMonthlyInterest());
+    public void printSavingsBalance() {
+        System.out.printf("%.2f\n", savingsBalance);
     }
 }
