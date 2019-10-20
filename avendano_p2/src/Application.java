@@ -15,23 +15,23 @@ public class Application {
         for (i = 0; i < 12; i++) {
             saver1.calculateMonthlyInterest();
             saver2.calculateMonthlyInterest();
+            System.out.print("Saver 1 balance after " + (i + 1) + " month(s) 4% Interest: $");
+            saver1.printSavingsBalance();
+            System.out.print("Saver 2 balance after " + (i + 1) + " month(s) 4% Interest: $");
+            saver2.printSavingsBalance();
+            System.out.println();
         }
-        System.out.print("Saver 1 balance after 12 months 4% Interest: $");
-        saver1.printSavingsBalance();
-        System.out.print("Saver 2 balance after 12 months 4% Interest: $");
-        saver2.printSavingsBalance();
 
         saver1.modifyInterestRate(0.05);
         saver2.modifyInterestRate(0.05);
 
-        for (i = 0; i < 12; i++) {
-            saver1.calculateMonthlyInterest();
-            saver2.calculateMonthlyInterest();
-        }
+        saver1.calculateMonthlyInterest();
+        saver2.calculateMonthlyInterest();
 
-        System.out.print("Saver 1 balance after 12 months with 5% Interest: $");
+
+        System.out.print("Saver 1 balance after 13 month(s) with 5% Interest: $");
         saver1.printSavingsBalance();
-        System.out.print("Saver 2 balance after 12 months with 5%  Interest: $");
+        System.out.print("Saver 2 balance after 13 month(s) with 5%  Interest: $");
         saver2.printSavingsBalance();
 
 
