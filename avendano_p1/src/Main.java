@@ -34,7 +34,7 @@ public class Main {
             return (double)a / b;
         }
         else {
-            return mathPractice(random, bound, random.nextInt(4));
+            return mathPractice(random, bound, random.nextInt(4) + 1);
         }
     }
 
@@ -143,8 +143,6 @@ public class Main {
                 ans = mathPractice(random, bound, mathType);
                 userAns = scnr.nextDouble();
                 // determines if user's answer is correct
-                System.out.println("ans: " + ans);
-                System.out.println("ans: " + (ans - userAns));
                 if (Math.abs(ans - userAns) < 0.01) {
                     correct++;
                     posResponses(rand);
